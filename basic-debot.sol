@@ -20,7 +20,7 @@ interface Basic {
     function confirmTransaction(uint64 transactionId) external;
 }
 
-contract basicDebot {
+contract basicDebot is Debot {
 
     address m_wallet;
     uint128 m_balance;
@@ -45,6 +45,10 @@ contract basicDebot {
     function getVersion() public override returns (string name, uint24 semver) {
         (name, semver) = ("Debot", 1 << 16);
     }
+
+    function fetch() public override returns (Context[] contexts) {}
+
+    function quit() public override {}
 
     function selectWallet(uint32 index) public {
         index = index;
